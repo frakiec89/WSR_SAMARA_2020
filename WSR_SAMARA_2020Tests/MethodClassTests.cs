@@ -12,6 +12,42 @@ namespace WSR_SAMARA_2020.Tests
     public class MethodClassTests
     {
         IMethodClass mc = new MethodClass();
+        
+        ChessBoard chessBoard = new ChessBoard
+        {
+            chessCells = new List<ChessCell>
+                {
+                   new ChessCell {  C='c' , I =2 , Color='w'  },
+                   new ChessCell {  C='c' , I =3 , Color='b'  },
+                   new ChessCell {  C='c' , I =4 , Color='w'  },
+                   new ChessCell {  C='c' , I =5 , Color='b' ,  figure = new Figure { Name='п' , Color ='b' }  },
+                   new ChessCell {  C='c' , I =6 , Color='w'  },
+
+                   new ChessCell {  C='d' , I =2 , Color='b' , figure = new Figure { Name ='п' , Color ='w' } },
+                   new ChessCell {  C='d' , I =3 , Color='w'  },
+                   new ChessCell {  C='d' , I =4 , Color='b'  },
+                   new ChessCell {  C='d' , I =5 , Color='w'  },
+                   new ChessCell {  C='d' , I =6 , Color='b'  },
+
+                   new ChessCell {  C='e' , I =2 , Color='w'  },
+                   new ChessCell {  C='e' , I =3 , Color='b'  },
+                   new ChessCell {  C='e' , I =4 , Color='w', figure =new Figure {Name='к', Color='w' } },
+                   new ChessCell {  C='e' , I =5 , Color='b'  },
+                   new ChessCell {  C='e' , I =6 , Color='w'  },
+
+                   new ChessCell {  C='f' , I =2 , Color='b'  },
+                   new ChessCell {  C='f' , I =3 , Color='w'  },
+                   new ChessCell {  C='f' , I =4 , Color='b'  },
+                   new ChessCell {  C='f' , I =5 , Color='w'  },
+                   new ChessCell {  C='f' , I =6 , Color='b'  },
+
+                   new ChessCell {  C='g' , I =2 , Color='w'  },
+                   new ChessCell {  C='g' , I =3 , Color='b'  },
+                   new ChessCell {  C='g' , I =4 , Color='w'  },
+                   new ChessCell {  C='g' , I =5 , Color='b'  },
+                   new ChessCell {  C='g' , I =6 , Color='w'  },
+                }
+        };
 
         [TestMethod()]
         public void GetInitialsTest_name_surname_patronymic_string()
@@ -152,11 +188,33 @@ namespace WSR_SAMARA_2020.Tests
         public void GetAgeTest_Negative_Data_ArgumentException()
         {
             DateTime dateTime = DateTime.Now.AddDays(1);
-           
-            Assert.ThrowsException<ArgumentException>(()=> mc.GetAge(dateTime));
-            
+            Assert.ThrowsException<ArgumentException>(() => mc.GetAge(dateTime));
         }
 
+        [TestMethod()]
+        public void GetPowTest_2_3_8()
+        {
+            Assert.AreEqual(8, mc.GetPow(2, 3));
+        }
+
+        [TestMethod()]
+        public void HorseRideTest_Start_Begin_True_Or_False()
+        {
+            Assert.AreEqual(true, mc.HorseRide(chessBoard.chessCells[12], chessBoard.chessCells[3]));
+            Assert.AreEqual(true, mc.HorseRide(chessBoard.chessCells[12], chessBoard.chessCells[1]));
+            Assert.AreEqual(true, mc.HorseRide(chessBoard.chessCells[12], chessBoard.chessCells[15]));
+            Assert.AreEqual(false, mc.HorseRide(chessBoard.chessCells[12], chessBoard.chessCells[5]));
+            Assert.AreEqual(true, mc.HorseRide(chessBoard.chessCells[12], chessBoard.chessCells[6]));
+        }
+
+        [TestMethod()]
+        public void HorseRideTest_Negative_Exception()
+        {
+            Assert.ThrowsException<ArgumentException>(() => mc.HorseRide(chessBoard.chessCells[10], chessBoard.chessCells[1]));
+            Assert.ThrowsException<ArgumentException>(() => mc.HorseRide(chessBoard.chessCells[12],
+                new ChessCell { C = 'z', Color = 'b', I = 8 }));
+               
+        }
 
     }
 }

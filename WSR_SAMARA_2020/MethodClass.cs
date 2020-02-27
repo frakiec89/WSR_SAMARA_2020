@@ -41,50 +41,68 @@ namespace WSR_SAMARA_2020
         double ConvertCurrency(double cash, char currency );
 
         /// <summary>
-        /// 
+        /// Растояние  до  детского  сада  
         /// </summary>
-        /// <param name="xColumn"></param>
-        /// <param name="xRow"></param>
+        /// <param name="xColumn"> координата дома </param>
+        /// <param name="xRow"> координата дома </param>
         /// <returns></returns>
         double DistanceToKindergarten(int xRow, int xColumn);
 
+        /// <summary>
+        /// Возвращает колл-во  полных лет  
+        /// </summary>
+        /// <param name="DateOfBirth">дата рождения</param>
+        /// <returns></returns>
         int GetAge(DateTime DateOfBirth);
 
+        /// <summary>
+        /// возмедение числа в степень
+        /// </summary>
+        /// <param name="x">число</param>
+        /// <param name="stepen">степень</param>
+        /// <returns></returns>
+        int GetPow(int x ,  int stepen);
 
+        /// <summary>
+        /// Ход  конем
+        /// </summary>
+        /// <param name="chessCellStart">стартовая позиция </param>
+        /// <param name="ChessCellEnd">планируемый  ход </param>
+        /// <returns></returns>
+        bool HorseRide(ChessCell chessCellStart, ChessCell ChessCellEnd);
+ 
     }
 
     public class MethodClass : IMethodClass
     {
-        public string GetInitials(string Name, string surname, string patronymic)
-        {
-            throw new NotImplementedException();
-        }
+      
+    }
 
-        public int GetMobilePhoneNumber(string number)
-        {
-            throw new NotImplementedException();
-        }
 
-        public string GetHash(string content, TypeHas has)
-        {
-            throw new NotImplementedException();
-        }
 
-        public double ConvertCurrency(double cash, char currency)
-        {
-            throw new NotImplementedException();
-        }
 
-        public double DistanceToKindergarten(int xRow, int xColumn)
-        {
-            throw new NotImplementedException();
-        }
 
-        public int GetAge(DateTime dateOfBirth)
-        {
-          
 
-            return 5;
-        }
+
+
+
+
+    public struct ChessBoard
+    {
+        public List<ChessCell> chessCells { get; set; }
+    }
+
+    public struct ChessCell
+    {
+        public char C { get; set; }
+        public int I { get; set; }
+        public char Color { get; set; }
+        public Figure figure { get; set; }
+    }
+
+    public struct Figure
+    {
+        public char Name { get; set; }
+        public char Color { get; set; }
     }
 }

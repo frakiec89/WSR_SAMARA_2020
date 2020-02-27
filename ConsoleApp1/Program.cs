@@ -10,9 +10,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            string h = "€";
+            string h = "   public void DistanceToKindergartenTest_NegativeX_ArgumentOutOfRangeException()";
 
-            Console.WriteLine(h);
+            Console.WriteLine(h.Length);
 
             Console.Read();
 
